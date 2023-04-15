@@ -20,7 +20,7 @@ public class OrbKeyboard : Sprite
         if(InputManager.Direction !=Vector2.Zero)
         {
             var dir = Vector2.Normalize(InputManager.Direction);
-            position += dir * speed * Global.TotalSeconds;
+            position += dir * speed;
         }
 
     }

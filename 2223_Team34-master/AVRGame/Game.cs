@@ -1,16 +1,26 @@
 ﻿using GameLib;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AVRGame
 {
     public class Game : GameLib.AVRGame
     {
+        private readonly GraphicsDeviceManager _graphics;
+        //private SpriteBatch _spriteBatch;
+        private GameManager _gameManager;
+       // private background _backgroundclass;
+
+
         RasterizerState rasterizerState = new RasterizerState() { MultiSampleAntiAlias = true };
         public Game()
         {
-            this.ScreenWidth = 800;
-            this.ScreenHeight = 600;
+            this.ScreenWidth = 1200;
+            this.ScreenHeight = 1000;
+            Global.Content = this.Content;
+            Global.SpriteBatch = this.spriteBatch;
+            
         }
 
         /// <summary>
@@ -19,7 +29,7 @@ namespace AVRGame
         /// </summary>
         protected override void __Initialize()
         {
-
+            
         }
 
         /// <summary>
@@ -28,6 +38,10 @@ namespace AVRGame
         /// </summary>
         protected override void __LoadContent()
         {
+           _gameManager = new GameManager();
+            
+
+
         }
 
         /// <summary>
@@ -36,7 +50,7 @@ namespace AVRGame
         /// </summary>
         protected override void __UnloadContent()
         {
-
+          
         }
 
         /// <summary>
@@ -45,6 +59,7 @@ namespace AVRGame
         /// <param name="gameTime"></param>
         protected override void __Update(GameTime gameTime)
         {
+            _gameManager.Update();
 
         }
 
@@ -56,11 +71,18 @@ namespace AVRGame
         /// <param name="gameTime"></param>
         protected override void __DrawGame(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            Global.SpriteBatch = spriteBatch;
             //Refresh your frame, should not be deleted. Color can be changed.
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //Begin your spritebatch.
             spriteBatch.Begin(rasterizerState: this.rasterizerState, transformMatrix: Camera.TransformMatrix);
+          
+
+
+        
+            _gameManager.Draw();
+            //_backgroundclass.Draw();
 
             //Place your world drawing logic here.
 

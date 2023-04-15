@@ -21,16 +21,26 @@ public class Sprite
 
     protected int speed;
 
+
     public Sprite(Texture2D tex, Vector2 pos)
     {
         texture = tex;
         position = pos;
-        speed = 300;
+        speed = 15;
         origin = new(tex.Width / 2, tex.Height / 2);
+    
     }
+    /*
+    lic Sprite(Texture2D tex2, Vector2 pos2)
+    {
+        texture = tex2;
+        position = pos2;
+    }
+    */
     public virtual void Draw()
     {
-        Global.SpriteBatch.Draw(texture, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 1);
+       
+        Global.SpriteBatch.Draw(texture, position, null, Color.White, 0, origin, 0.1f, SpriteEffects.None, 1);
     }
 
 

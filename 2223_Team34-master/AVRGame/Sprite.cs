@@ -30,13 +30,7 @@ public class Sprite
         origin = new(tex.Width / 2, tex.Height / 2);
     
     }
-    /*
-    lic Sprite(Texture2D tex2, Vector2 pos2)
-    {
-        texture = tex2;
-        position = pos2;
-    }
-    */
+    
     public virtual void Draw()
     {
        

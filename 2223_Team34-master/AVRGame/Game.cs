@@ -7,17 +7,20 @@ namespace AVRGame
 {
     public class Game : GameLib.AVRGame
     {
+
+
         private readonly GraphicsDeviceManager _graphics;
         //private SpriteBatch _spriteBatch;
         private GameManager _gameManager;
-       // private background _backgroundclass;
+        // private background _backgroundclass;
+        private Texture2D _backGround;
 
 
         RasterizerState rasterizerState = new RasterizerState() { MultiSampleAntiAlias = true };
         public Game()
         {
-            this.ScreenWidth = 1200;
-            this.ScreenHeight = 1000;
+            this.ScreenWidth = 1000;
+            this.ScreenHeight = 800;
             Global.Content = this.Content;
             Global.SpriteBatch = this.spriteBatch;
             
@@ -39,7 +42,7 @@ namespace AVRGame
         protected override void __LoadContent()
         {
            _gameManager = new GameManager();
-            
+            _backGround = Global.Content.Load<Texture2D>("Background");
 
 
         }
@@ -77,11 +80,12 @@ namespace AVRGame
 
             //Begin your spritebatch.
             spriteBatch.Begin(rasterizerState: this.rasterizerState, transformMatrix: Camera.TransformMatrix);
-          
 
 
+            spriteBatch.Draw(_backGround, new Vector2(-500,-400), null, Color.White, 0,  new Vector2(0,0), 2, SpriteEffects.None, 1);
         
             _gameManager.Draw();
+
             //_backgroundclass.Draw();
 
             //Place your world drawing logic here.
